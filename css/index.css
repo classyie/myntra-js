@@ -69,22 +69,7 @@ a.action_container:link {
     font-size: 20px;
     cursor: pointer;
 }
-.bag-items {
-    background-color: #f16565;
-    white-space: nowrap;
-    text-align: center;
-    line-height: 18px;
-    padding: 0 6px;
-    height: 18px;
-    position: relative;
-    border-radius: 50%;
-    font-size: 12px;
-    color: #fff;
-    left: 13px;
-    top: -44px;
-    font-weight: 700;
-    cursor: pointer;
-}*/
+*/
 
 * {
   margin: 0;
@@ -360,4 +345,22 @@ header {
   font-weight: 400;
   font-size: 12px;
   margin-left: 5px;
+}
+
+
+.bag-items {
+    background-color: #f16565;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 18px;
+    padding: 0 6px;
+    height: 18px;
+    position: relative;
+    border-radius: 50%;
+    font-size: 12px;
+    color: #fff;
+    left: 13px;
+    top: -44px;
+    font-weight: 700;
+    cursor: pointer;
 }

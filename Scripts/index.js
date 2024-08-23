@@ -1,9 +1,18 @@
 let displayItemElement = document.querySelector('.items-container');
 let displayItems = ''; // Initialize as an empty string
-
-items.forEach((item, index) => {
-  displayItems += concatItems(item); // Concatenate the HTML string
-});
+let cartItems;
+const bagItemsElement = document.querySelector('.bag-items');
+onload();
+function onload(){
+  const bagItemsStr = localStorage.getItem('bagItems');
+  cartItems = bagItemsStr ? JSON.parse(bagItemsStr) : [];
+  items.forEach((item) => {
+    displayItems += concatItems(item); // Concatenate the HTML string
+  });
+  
+  bagIconDisplay();
+  displayItemElement.innerHTML = displayItems;
+}
 
 function concatItems(item){
   return (`
@@ -26,9 +35,28 @@ function concatItems(item){
           <span class="product-discountPercentage">(${item.discount_percentage}% OFF)</span>
         </div>
       </div>
-      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-cart"  onClick=addToCart(${item.id})>Add to Cart</button>
     </div>`);
 }
 
-// Finally, set the innerHTML of the container
-displayItemElement.innerHTML = displayItems;
+// Cache the DOM element outside the functions for better performance
+
+
+function addToCart(item) {
+  cartItems.push(item);
+  localStorage.setItem("bagItems",JSON.stringify(cartItems));
+  bagIconDisplay();
+}
+
+function bagIconDisplay() {
+  if (cartItems.length > 0) {
+    bagItemsElement.innerHTML = cartItems.length;
+    bagItemsElement.style.visibility = 'visible';
+  } else {
+    bagItemsElement.style.visibility = 'hidden';
+  }
+}
+
+
+
+
